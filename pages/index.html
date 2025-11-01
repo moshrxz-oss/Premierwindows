@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Premier Windows & Building Centre | PEI</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    /* Tailwind Custom Colors */
+    @layer utilities {
+      .bg-primaryBlue { background-color: #002b5c; }
+      .bg-accentGreen { background-color: #00b388; }
+      .bg-softTeal { background-color: #89efd6; }
+      .text-darkGray { color: #303135; }
+      .bg-highlightGreen { background-color: #00d958; }
+    }
+  </style>
+    <link rel="icon" type="image/png" href="../assets/logo.png" />
+
+</head>
+<body class="font-sans text-darkGray">
+
+  <!-- Hero Section -->
+  <section class="relative bg-primaryBlue text-white">
+    <div class="absolute inset-0 bg-primaryBlue/90"></div>
+    <div class="relative container mx-auto px-6 py-32 text-center">
+      <h1 class="text-4xl md:text-6xl font-bold mb-4">Build Better. Locally.</h1>
+      <p class="text-lg md:text-2xl mb-8">Windows, Doors, and Building Materials—Everything You Need from a PEI Company You Can Trust.</p>
+      <a href="#contact" class="inline-block bg-highlightGreen hover:bg-accentGreen text-white font-bold py-4 px-8 rounded-lg transition">Get a Free Quote</a>
+    </div>
+  </section>
+
+ <!-- About / Local Trust Carousel -->
+<section class="bg-[#f8fdfd] py-24">
+  <div class="container mx-auto px-6">
+    <!-- Text -->
+    <div class="text-center md:text-left mb-12">
+      <h2 class="text-4xl font-bold text-[#002b5c] mb-4">Serving PEI for Over 35 Years</h2>
+      <p class="text-[#303135]/90 mb-4 text-lg">Premier Windows & Building Centre is a trusted local company providing high-quality windows, doors, and building materials across Prince Edward Island. We understand local construction needs and provide professional installation services for every project.</p>
+      <p class="text-[#303135]/90 text-lg">From custom windows and doors to full building supplies, we are your one-stop solution to make your home renovation or construction stress-free and reliable.</p>
+    </div>
+
+<!-- Carousel -->
+<div class="relative w-full overflow-hidden rounded-2xl shadow-lg">
+  <div class="carousel flex transition-transform duration-500 ease-in-out">
+    <img src="../assets/main_image.jpg" alt="Windows" class="w-full md:w-1/2 lg:w-1/4 object-cover">
+    <img src="../assets/carousel2.jpg" alt="Doors" class="w-full md:w-1/2 lg:w-1/4 object-cover">
+    <img src="../assets/carousel7.jpg" alt="Building Materials" class="w-full md:w-1/2 lg:w-1/4 object-cover">
+    <img src="../assets/carousel6.jpg" alt="Artificial Turf" class="w-full md:w-1/2 lg:w-1/4 object-cover">
+    <img src="../assets/carousel3.jpg" alt="Renovation" class="w-full md:w-1/2 lg:w-1/4 object-cover">
+    <img src="../assets/carousel8.jpg" alt="Siding & Roofing" class="w-full md:w-1/2 lg:w-1/4 object-cover">
+  </div>
+
+  <!-- Prev/Next Buttons -->
+  <button id="prev" class="absolute top-1/2 left-2 transform -translate-y-1/2 bg-[#002b5c]/70 text-white p-2 rounded-full hover:bg-[#00b388]/80 transition z-10">
+    &#10094;
+  </button>
+  <button id="next" class="absolute top-1/2 right-2 transform -translate-y-1/2 bg-[#002b5c]/70 text-white p-2 rounded-full hover:bg-[#00b388]/80 transition z-10">
+    &#10095;
+  </button>
+</div>
+
+<!-- Carousel JS with Autoplay -->
+<script>
+  const carousel = document.querySelector('.carousel');
+  const next = document.getElementById('next');
+  const prev = document.getElementById('prev');
+
+  let index = 0;
+
+  // Calculate visible slides per screen
+  const getVisible = () => window.innerWidth >= 1024 ? 4 : window.innerWidth >= 768 ? 2 : 1;
+
+  const updateCarousel = () => {
+    const slides = carousel.children.length;
+    const visible = getVisible();
+    const slideWidth = carousel.children[0].getBoundingClientRect().width;
+    carousel.style.transform = `translateX(-${index * slideWidth}px)`;
+  };
+
+  const nextSlide = () => {
+    const slides = carousel.children.length;
+    const visible = getVisible();
+    index = (index + 1) % (slides - visible + 1);
+    updateCarousel();
+  }
+
+  const prevSlide = () => {
+    const slides = carousel.children.length;
+    const visible = getVisible();
+    index = (index - 1 + (slides - visible + 1)) % (slides - visible + 1);
+    updateCarousel();
+  }
+
+  next.addEventListener('click', nextSlide);
+  prev.addEventListener('click', prevSlide);
+
+  // Autoplay
+  let autoplay = setInterval(nextSlide, 3000);
+
+  // Pause on hover
+  carousel.parentElement.addEventListener('mouseenter', () => clearInterval(autoplay));
+  carousel.parentElement.addEventListener('mouseleave', () => autoplay = setInterval(nextSlide, 3000));
+
+  // Update on window resize
+  window.addEventListener('resize', updateCarousel);
+</script>
+
+
+
+<!-- Services -->
+<section class="bg-softTeal/10 py-20">
+  <div class="container mx-auto px-6 text-center">
+    <h2 class="text-3xl font-bold mb-12 text-[#002b5c]">Our Services</h2>
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+      
+      <!-- Windows & Doors -->
+      <div class="bg-white p-6 rounded-lg shadow hover:shadow-lg transition flex flex-col items-center">
+        <div class="w-full h-48 overflow-hidden rounded-lg mb-4">
+          <img src="../assets/doors_windows.jpeg" alt="Windows" class="w-full h-full object-cover object-center">
+        </div>
+        <h3 class="text-xl font-bold mb-2 text-[#002b5c]">Windows & Doors</h3>
+        <p>High-quality windows and doors with professional installation for homes and renovations.</p>
+      </div>
+
+      <!-- Building Materials -->
+      <div class="bg-white p-6 rounded-lg shadow hover:shadow-lg transition flex flex-col items-center">
+        <div class="w-full h-48 overflow-hidden rounded-lg mb-4">
+          <img src="../assets/building_materials.jpg" alt="Building Materials" class="w-full h-full object-cover object-center">
+        </div>
+        <h3 class="text-xl font-bold mb-2 text-[#002b5c]">Building Materials</h3>
+        <p>Everything you need to build your home—siding, roofing, trim, insulation, and more.</p>
+      </div>
+
+      <!-- Artificial Turf Installation -->
+      <div class="bg-white p-6 rounded-lg shadow hover:shadow-lg transition flex flex-col items-center">
+        <div class="w-full h-48 overflow-hidden rounded-lg mb-4">
+          <img src="../assets/turf.jpg" alt="Artificial Turf" class="w-full h-full object-cover object-center">
+        </div>
+        <h3 class="text-xl font-bold mb-2 text-[#002b5c]">Artificial Turf Installation</h3>
+        <p>Enjoy a lush, low-maintenance lawn all year round with our premium artificial turf installation services.</p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+  <!-- Promo Highlight -->
+  <!-- <section class="bg-accentGreen text-white py-20 text-center">
+    <h2 class="text-3xl md:text-4xl font-bold mb-4">Special Offer!</h2>
+    <p class="text-lg md:text-xl mb-6">Bundle 3 Services and Get a FREE Heat Pump!</p>
+    <a href="#contact" class="inline-block bg-highlightGreen hover:bg-white text-primaryBlue font-bold py-4 px-8 rounded-lg transition">Claim Offer</a>
+  </section> -->
+
+ <!-- Testimonials -->
+<section class="bg-gradient-to-b from-[#f8fdfd] to-[#89efd6]/10 py-24">
+  <div class="container mx-auto px-6">
+    <h2 class="text-4xl font-bold text-center mb-12 text-[#002b5c]">What Our Customers Say</h2>
+
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-10">
+      <!-- Testimonial 1 -->
+      <div class="bg-white/90 backdrop-blur-sm p-8 rounded-2xl shadow-lg hover:shadow-[#00b388]/30 transition-all transform hover:-translate-y-1">
+        <div class="flex justify-center mb-4">
+          <svg xmlns="http://www.w3.org/2000/svg" class="w-8 h-8 text-[#00b388]" fill="currentColor" viewBox="0 0 20 20">
+            <path d="M10.394 1.707a1 1 0 00-1.788 0L3.382 12.592a1 1 0 00.894 1.408h4.432l-.94 4.7a1 1 0 001.89.632l5.224-10.885a1 1 0 00-.894-1.408H10.4l-.006-.007z" />
+          </svg>
+        </div>
+        <p class="text-[#303135]/90 italic mb-4">"Premier Windows transformed our home! The installation was flawless and the team was professional and friendly."</p>
+        <span class="font-semibold text-[#002b5c] block">— Sarah L., Charlottetown, PEI</span>
+      </div>
+
+      <!-- Testimonial 2 -->
+      <div class="bg-white/90 backdrop-blur-sm p-8 rounded-2xl shadow-lg hover:shadow-[#00b388]/30 transition-all transform hover:-translate-y-1">
+        <div class="flex justify-center mb-4">
+          <svg xmlns="http://www.w3.org/2000/svg" class="w-8 h-8 text-[#00b388]" fill="currentColor" viewBox="0 0 20 20">
+            <path d="M10.394 1.707a1 1 0 00-1.788 0L3.382 12.592a1 1 0 00.894 1.408h4.432l-.94 4.7a1 1 0 001.89.632l5.224-10.885a1 1 0 00-.894-1.408H10.4l-.006-.007z" />
+          </svg>
+        </div>
+        <p class="text-[#303135]/90 italic mb-4">"Great selection of building materials and very helpful staff. Highly recommend for anyone building or renovating in PEI."</p>
+        <span class="font-semibold text-[#002b5c] block">— Mark D., Summerside, PEI</span>
+      </div>
+
+      <!-- Testimonial 3 -->
+      <div class="bg-white/90 backdrop-blur-sm p-8 rounded-2xl shadow-lg hover:shadow-[#00b388]/30 transition-all transform hover:-translate-y-1">
+        <div class="flex justify-center mb-4">
+          <svg xmlns="http://www.w3.org/2000/svg" class="w-8 h-8 text-[#00b388]" fill="currentColor" viewBox="0 0 20 20">
+            <path d="M10.394 1.707a1 1 0 00-1.788 0L3.382 12.592a1 1 0 00.894 1.408h4.432l-.94 4.7a1 1 0 001.89.632l5.224-10.885a1 1 0 00-.894-1.408H10.4l-.006-.007z" />
+          </svg>
+        </div>
+        <p class="text-[#303135]/90 italic mb-4">"The turf installation bundle was a fantastic deal. Quality work and great customer service!"</p>
+        <span class="font-semibold text-[#002b5c] block">— Lisa R., Cornwall, PEI</span>
+      </div>
+    </div>
+
+    <!-- CTA Below Testimonials -->
+    <div class="text-center mt-16">
+      <a href="#contact" 
+         class="inline-block bg-[#00b388] hover:bg-[#00d958] text-white font-semibold text-lg px-10 py-4 rounded-lg shadow-lg transition-all transform hover:scale-[1.05]">
+         Get Your Free Quote Today
+      </a>
+    </div>
+  </div>
+</section>
+
+
+ <!-- Contact Form / Quote Request -->
+<section id="contact" class="relative bg-gradient-to-b from-[#89efd6]/30 to-white py-24">
+  <div class="container mx-auto px-6 max-w-3xl relative z-10">
+    <div class="text-center mb-10">
+      <h2 class="text-4xl font-bold text-[#002b5c] mb-4">Request Your Free Estimate</h2>
+      <p class="text-lg text-[#303135]/80">Tell us a bit about your project and our team will get back to you with a personalized quote.</p>
+    </div>
+
+    <form class="bg-white/90 backdrop-blur-sm border border-[#00b388]/20 p-10 rounded-2xl shadow-2xl space-y-6 hover:shadow-[#00b388]/20 transition">
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <div>
+          <label class="block mb-2 text-[#002b5c] font-semibold">Full Name</label>
+          <input type="text" placeholder="Your Name" 
+            class="w-full p-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-[#00b388] transition">
+        </div>
+        <div>
+          <label class="block mb-2 text-[#002b5c] font-semibold">Email</label>
+          <input type="email" placeholder="Your Email" 
+            class="w-full p-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-[#00b388] transition">
+        </div>
+        <div>
+          <label class="block mb-2 text-[#002b5c] font-semibold">Phone</label>
+          <input type="tel" placeholder="Your Phone Number" 
+            class="w-full p-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-[#00b388] transition">
+        </div>
+        <div>
+          <label class="block mb-2 text-[#002b5c] font-semibold">Project Type</label>
+          <select class="w-full p-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-[#00b388] transition">
+            <option selected disabled>Select a service</option>
+            <option>Windows & Doors</option>
+            <option>Building Materials</option>
+            <option>Artificial Turf Installation</option>
+            <option>Full Renovation</option>
+            <option>Other</option>
+          </select>
+        </div>
+      </div>
+
+      <div>
+        <label class="block mb-2 text-[#002b5c] font-semibold">Message</label>
+        <textarea rows="4" placeholder="Tell us about your project..." 
+          class="w-full p-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-[#00b388] transition"></textarea>
+      </div>
+
+      <button type="submit" 
+        class="w-full bg-[#00b388] hover:bg-[#00d958] text-white font-semibold text-lg py-4 rounded-lg shadow-lg transition-all transform hover:scale-[1.02]">
+        Get My Quote
+      </button>
+    </form>
+  </div>
+
+  <!-- Decorative circles background -->
+  <div class="absolute top-0 left-0 w-40 h-40 bg-[#00b388]/20 rounded-full blur-3xl"></div>
+  <div class="absolute bottom-10 right-10 w-64 h-64 bg-[#002b5c]/10 rounded-full blur-3xl"></div>
+</section>
+
+
+ <!-- Footer -->
+<footer class="bg-primaryBlue text-white py-8">
+  <div class="container mx-auto px-6 text-center">
+    <p>Premier Windows & Building Centre | Proudly serving Prince Edward Island</p>
+    <p>Phone: +1 902 370 3062 | Address: 23 Babineau Avenue, Charlottetown, PEI, C1C 0H5</p>
+    <div class="flex justify-center mt-4 gap-4">
+      <a href="https://www.facebook.com/premierwindowsandbuildingcentre" target="_blank" class="hover:text-accentGreen">Facebook</a>
+      <a href="privacy-policy.html" class="underline hover:text-accentGreen">Privacy Policy</a>
+      <a href="terms.html" class="underline hover:text-accentGreen">Terms & Conditions</a>
+      <a href="cookie-policy.html" class="underline hover:text-accentGreen">Cookie Policy</a>
+    </div>
+    <p class="mt-4 text-sm">&copy; 2025 Premier Windows & Building Centre. All rights reserved.</p>
+<p class="mt-2 text-xs text-gray-300">
+  Developed by 
+  <a href="mailto:teamredsoilcreations@gmail.com" class="underline hover:text-accentGreen">Redsoil Creations</a>
+</p>
+  </div>
+</footer>
+
+
+</body>
+</html>
